@@ -1,0 +1,51 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: rgba(0, 171, 163, 0.11);
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background: #00ABA9;
+}
+
+.logo, nav {
+    display: flex;
+    flex-direction: column;     
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+    padding: 10px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+nav a:hover {
+    background-color: rgba(73, 255, 246, 0.11)
+}
+
+header, main {
+    margin-left: 25%;
+}
+
