@@ -237,14 +237,14 @@ main .about p {
 }
 
 main .about a {
+    border: #00bab7 solid 2px;
+    background-color: transparent;
+    color: #00bab7;
     text-decoration: none;
-    background-color: #00bab7;
-    color: #fff;
     padding: 10px 20px;
 }
 
 main .about a:hover {
-    border: #00bab7 solid 2px;
-    background-color: transparent;
-    color: #00bab7;
+    background-color: #00bab7;
+    color: #fff;
 }
