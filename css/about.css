@@ -242,6 +242,7 @@ main .about a {
     color: #00bab7;
     text-decoration: none;
     padding: 10px 20px;
+    transition: .3s;
 }
 
 main .about a:hover {
