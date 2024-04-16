@@ -254,7 +254,6 @@ nav a:hover::after {
 }
 
 .contact-form input {
-    width: 25rem;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #00bab7;
@@ -262,7 +261,6 @@ nav a:hover::after {
 }
 
 .contact-form textarea {
-    width: 25rem;
     padding: 10px;
     margin: 5px 0;
     height: 10rem;
@@ -272,7 +270,6 @@ nav a:hover::after {
 }
 
 .contact-form button {
-    width: 25rem;
     padding: 10px;
     background-color: #00bab7;
     color: #fff;
@@ -280,9 +277,67 @@ nav a:hover::after {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 5px;
-    transitions: .3s;
 }
 
 .contact-form button:hover {
     background-color: #008886;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 900px) {
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-top: 10px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .logo a {
+        font-size: 30px;
+    }
+
+    nav {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 15px;
+        margin: 0 10px;
+    }
+
+    .home {
+        display: none;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 20rem;
+        height: 40rem;
+    }
+
+    .contact-form {
+        width: 80%;
+        height: 60%;
+        margin-top: 20px;
+    }
+
+    .contact-form h1 {
+        font-size: 20px;
+    }
+
+    .side-info i {
+        font-size: 20px;
+    }
+
+    .side-info a {
+        font-size: 10px;
+    }
 }

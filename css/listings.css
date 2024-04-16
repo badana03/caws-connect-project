@@ -325,3 +325,41 @@ main {
     border-color: #00fffb;
     color: #00fffb;
 }
+
+/* Responsiveness */
+
+@media screen and (max-width: 900px) {
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-top: 10px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .logo a {
+        font-size: 30px;
+    }
+
+    nav {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 15px;
+        margin: 0 10px;
+    }
+
+    .home {
+        display: none;
+    }
+
+    main h1 {
+        font-size: 40px;
+    }
+}
