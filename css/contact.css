@@ -319,8 +319,8 @@ nav a:hover::after {
     .container {
         display: flex;
         flex-direction: column-reverse;
-        width: 20rem;
-        height: 40rem;
+        width: 80%;
+        height: 70%;
     }
 
     .contact-form {
