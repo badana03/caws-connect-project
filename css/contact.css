@@ -325,7 +325,7 @@ nav a:hover::after {
 
     .contact-form {
         width: 80%;
-        height: 60%;
+        height: 50%;
         margin-top: 20px;
     }
 
@@ -333,11 +333,15 @@ nav a:hover::after {
         font-size: 20px;
     }
 
+    .side-info {
+        margin-top: 20px;
+    }
+
     .side-info i {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .side-info a {
-        font-size: 10px;
+        font-size: 8px;
     }
 }
