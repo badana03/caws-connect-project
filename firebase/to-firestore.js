@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getFirestore, deleteDoc, collection, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { petInfo } from "./from-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,7 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log(petInfo);
+const ID = petInfo;
 
 // Add user reservation to Firestore
 async function reserve() {
@@ -32,6 +32,7 @@ async function reserve() {
     const maleRadio = document.getElementById('gender-male');
     const femaleRadio = document.getElementById('gender-female');
     const termsCheckbox = document.getElementById('terms');
+    const petId = ID;
 
     // Check if name, email, phone, and birthdate are not empty
     if (!name || !email || !phone || !day || !month || !year) {
@@ -68,24 +69,8 @@ async function reserve() {
             gender: gender,
             terms: 'Agreed',
             status: 'active', // Adding status field to indicate active reservation
-            petId: petData // Storing the ID of the pet listing
+            petId: petId // Storing the ID of the pet listing
         });
-        
-        alert('Reservation Successful!');
-
-        // Set timer for 24 hours
-        setTimeout(async () => {
-            // Delete reservation after 24 hours
-            await deleteDoc(docRef);
-
-            // Update user's information with "status: cancelled"
-            await updateDoc(docRef, {
-                status: 'cancelled'
-            });
-
-            alert('Reservation Cancelled (24 hours passed)');
-        }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
-
         // Reset form after successful reservation
         document.getElementById('user-info').reset();
     } catch (error) {
@@ -93,12 +78,3 @@ async function reserve() {
         alert('Error Adding Reservation!');
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const submitBtn = document.getElementById('submitForm');
-
-    submitBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        reserve();
-    });
-});
