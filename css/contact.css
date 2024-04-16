@@ -280,6 +280,7 @@ nav a:hover::after {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 5px;
+    transitions: .3s;
 }
 
 .contact-form button:hover {
