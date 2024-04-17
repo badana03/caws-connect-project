@@ -61,7 +61,8 @@ async function reserve() {
 
     // If all conditions are met, proceed with reservation
     try {
-        const docRef = await addDoc(collection(db, 'reservations'), {
+        const docRef = await addDoc(collection(db, 'reservations'));
+        docRef.set({
             name: name,
             email: email,
             phone: phone,
@@ -69,9 +70,10 @@ async function reserve() {
             gender: gender,
             terms: 'Agreed',
             status: 'active', // Adding status field to indicate active reservation
-            petId: petId // Storing the ID of the pet listing
+            petId: petId
         });
         // Reset form after successful reservation
+        alert('Reservation Added Successfully!');
         document.getElementById('user-info').reset();
     } catch (error) {
         console.error('Error adding reservation:', error);
