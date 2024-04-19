@@ -34,7 +34,6 @@ async function reserve() {
     const termsCheckbox = document.getElementById('terms');
     const petId = ID;
 
-    // Check if name, email, phone, and birthdate are not empty
     if (!name || !email || !phone || !day || !month || !year) {
         alert('Please fill in all fields!');
         return;
@@ -42,7 +41,6 @@ async function reserve() {
 
     const birthdate = day + '/' + month + '/' + year;
 
-    // Check if a gender option is selected
     let gender = '';
     if (maleRadio.checked) {
         gender = 'male';
@@ -53,27 +51,24 @@ async function reserve() {
         return;
     }
 
-    // Check if the terms checkbox is checked
     if (!termsCheckbox.checked) {
         alert('Please Agree To The Terms!');
         return;
     }
 
-    // If all conditions are met, proceed with reservation
+    // Reservation
     try {
-        const docRef = await addDoc(collection(db, 'reservations'));
-        docRef.set({
+        const docRef = await doc(collection(db, 'reservations'));
+        docRef.addDoc({
             name: name,
             email: email,
             phone: phone,
             birthdate: birthdate,
             gender: gender,
             terms: 'Agreed',
-            status: 'active', // Adding status field to indicate active reservation
+            status: 'active', 
             petId: petId
         });
-        // Reset form after successful reservation
-        alert('Reservation Added Successfully!');
         document.getElementById('user-info').reset();
     } catch (error) {
         console.error('Error adding reservation:', error);

@@ -264,7 +264,7 @@ main {
 .pet {
     position: absolute;
     left: 10%;
-    top: 10%;
+    top: 5%;
     padding: 0;
     transform: translateX(-5%);
 }
