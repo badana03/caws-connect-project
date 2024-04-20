@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 import { petInfo } from "./from-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,7 +22,7 @@ const db = getFirestore(app);
 const ID = petInfo;
 
 // Add user reservation to Firestore
-async function reserve() {
+async function addReservation() {
     const name = document.getElementById('full-name').value;
     const email = document.getElementById('email-address').value;
     const phone = document.getElementById('phone-number').value;
@@ -56,22 +56,28 @@ async function reserve() {
         return;
     }
 
-    // Reservation
     try {
-        const docRef = await doc(collection(db, 'reservations'));
-        docRef.addDoc({
+        // Reservation
+        await addDoc(collection(db, 'reservations'), {
             name: name,
             email: email,
             phone: phone,
             birthdate: birthdate,
             gender: gender,
             terms: 'Agreed',
-            status: 'active', 
-            petId: petId
+            pet_id: petId
         });
-        document.getElementById('user-info').reset();
+
+        await updateDoc(collection(db, 'pet_listings', petId), {
+            status: 'Reserved'
+        });
+
+        alert('Reservation Successful!');
     } catch (error) {
-        console.error('Error adding reservation:', error);
-        alert('Error Adding Reservation!');
+        console.error('Error adding document: ', error);
+        alert('An error occurred. Please try again later.');
     }
 }
+
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.addEventListener('click', addReservation);

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="../css/form.css">
   <!-- Firebase -->
-  <script type="module" src="../firebase/to-firestore.js" async></script>
+  <script type="module" src="../firebase/to-firestore.js" defer></script>
   <title>Form</title>
 </head>
 <body>
@@ -81,7 +81,7 @@
       </div>
       <div class="confirmation-btn">
         <button type="reset" onclick="window.location.href='listings.html'">Cancel</button>
-        <button type="submit" onclick="reserve()">Submit</button>
+        <button type="button" id="submitBtn">Submit</button>
       </div>
     </form>
   </div>
