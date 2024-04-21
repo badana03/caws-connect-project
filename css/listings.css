@@ -282,6 +282,18 @@ main {
     font-family: cursive;
 }
 
+i[value="available"] {
+    color: #00b336;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+i[value="reserved"] {
+    color: #940000;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
 .pet .desc {
     color: #dddddd;
     text-align: justify;

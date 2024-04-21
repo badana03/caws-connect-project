@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
-import { getFirestore, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
-import { petInfo } from "./from-firestore.js";
+import { getFirestore, collection, doc, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,7 +18,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const ID = petInfo;
+
+// Get the pet ID from the URL
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const petId = urlParams.get('petId');
 
 // Add user reservation to Firestore
 async function addReservation() {
@@ -32,7 +35,7 @@ async function addReservation() {
     const maleRadio = document.getElementById('gender-male');
     const femaleRadio = document.getElementById('gender-female');
     const termsCheckbox = document.getElementById('terms');
-    const petId = ID;
+    const petInfo = petId;
 
     if (!name || !email || !phone || !day || !month || !year) {
         alert('Please fill in all fields!');
@@ -65,16 +68,19 @@ async function addReservation() {
             birthdate: birthdate,
             gender: gender,
             terms: 'Agreed',
-            pet_id: petId
+            pet_id: petInfo
         });
-
-        await updateDoc(collection(db, 'pet_listings', petId), {
-            status: 'Reserved'
+        // Update the pet listing
+        const petRef = doc(db, 'pet_listings', petId);
+        await updateDoc(petRef, {
+            status: 'reserved',
+            button_state: 'disabled'
         });
-
+        document.getElementById('user-info').reset();
         alert('Reservation Successful!');
     } catch (error) {
-        console.error('Error adding document: ', error);
+        console.error('Error Adding Document: ', error);
+        document.getElementById('user-info').reset();
         alert('An error occurred. Please try again later.');
     }
 }
