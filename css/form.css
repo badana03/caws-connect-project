@@ -176,8 +176,12 @@ select option {
   transition: all 0.35s ease-in-out;
 }
 .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 38em;
-  padding: 1em 3em 4em 3em;
+  padding: 1em 3em 3em 3em;
   margin: 0em auto;
   background-color: #fff;
   border-radius: 4.2px;
@@ -212,7 +216,6 @@ select option {
 }
 .confirmation-btn {
   float: right;
-  padding-bottom: 10px;
 }
 .confirmation-btn button:nth-child(1) {
   background-color: #fff;
