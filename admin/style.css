@@ -53,6 +53,12 @@ main {
 }
 
 .container form button:hover {  
-    background-color: #37474F;
+    background-color: #008886;
     transition: .3s;
+}
+
+#userData p{
+    margin: 10px 0;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
 }

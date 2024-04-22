@@ -243,6 +243,41 @@ select option {
   transition: 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
+.paymaya {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100px;
+  background-image: url('../img/paymaya-logo.png');
+  background-size: cover;
+  cursor: pointer;
+}
+.paymaya:hover {
+  background-image: url('../img/paymaya.jpg');
+  height: 420px;
+  width: 300px;
+  left: 3%;
+  transition: .5s;
+}
+.gcash {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  background-image: url('../img/gcash-logo.png');
+  background-size: cover;
+}
+.gcash:hover {
+  background-image: url('../img/gcash.jpg');
+  height: 620px;
+  width: 300px;
+  right: 3%;
+  transition: .5s;
+}
 @media only screen and (max-width: 540px) {
   .col-half {
     width: 100%;

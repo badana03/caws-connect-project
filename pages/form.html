@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="../css/form.css">
   <!-- Firebase -->
   <script type="module" src="../firebase/to-firestore.js" defer></script>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="input-group input-group-icon">
-          <input type="email" id="email-address" placeholder="Email Adress" required>
+          <input type="email" id="email-address" placeholder="Email Adress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
           <div class="input-icon">
             <i class="fa fa-envelope"></i>
           </div>
@@ -60,10 +60,19 @@
         </div>
       </div>
       <div class="row">
+        <h4>Payment</h4>
+        <div class="input-group input-group-icon">
+          <input type="number" id="reference-num" placeholder="Reference No." required>
+          <div class="input-icon">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <h4>Terms and Conditions</h4>
         <div class="input-group">
           <input id="terms" type="checkbox" required>
-          <label for="terms">I accept the terms and conditions for signing up to this service, and hereby confirm I have read the privacy policy.</label>
+          <label for="terms">I accept the <a href="terms.html" style="text-decoration: none; color: #006effad;">terms and conditions</a> for signing up to this service, and hereby confirm I have read the privacy policy.</label>
         </div>
       </div>
       <div class="confirmation-btn">
@@ -72,5 +81,7 @@
       </div>
     </form>
   </div>
+<div class="gcash"></div>
+<div class="paymaya"></div>
 </body>
 </html>

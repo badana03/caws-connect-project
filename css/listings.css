@@ -283,13 +283,13 @@ main {
 }
 
 i[value="available"] {
-    color: #00b336;
+    color: #bbbbbb;
     font-size: 20px;
     margin-left: 10px;
 }
 
 i[value="reserved"] {
-    color: #940000;
+    color: #48ff00;
     font-size: 20px;
     margin-left: 10px;
 }

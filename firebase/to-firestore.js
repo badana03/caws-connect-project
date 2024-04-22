@@ -35,14 +35,26 @@ async function addReservation() {
     const maleRadio = document.getElementById('gender-male');
     const femaleRadio = document.getElementById('gender-female');
     const termsCheckbox = document.getElementById('terms');
+    const refNo = document.getElementById('reference-num').value;
     const petInfo = petId;
 
-    if (!name || !email || !phone || !day || !month || !year) {
+    if (!name || !email || !phone || !day || !month || !year || !refNo) {
         alert('Please fill in all fields!');
         return;
     }
 
-    const birthdate = day + '/' + month + '/' + year;
+    const birthdate = new Date(`${year}-${month}-${day}`);
+    const today = new Date();
+    const age = today.getFullYear() - birthdate.getFullYear();
+
+    if (today.getMonth() < birthdate.getMonth() || (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())) {
+        age--;
+    }
+
+    if (age < 18) {
+        alert('You must be at least 18 years old to make a reservation.');
+        return;
+    }
 
     let gender = '';
     if (maleRadio.checked) {
@@ -59,15 +71,30 @@ async function addReservation() {
         return;
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address!');
+        return;
+    }
+
+    // Phone validation
+    const phoneRegex = /^(09|\+639)\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid phone number!');
+        return;
+    }
+
     try {
         // Reservation
         await addDoc(collection(db, 'reservations'), {
             name: name,
             email: email,
             phone: phone,
-            birthdate: birthdate,
+            birthdate: birthdate.toLocaleDateString(),
             gender: gender,
             terms: 'Agreed',
+            reference_number: refNo,
             pet_id: petInfo
         });
         // Update the pet listing
@@ -76,8 +103,10 @@ async function addReservation() {
             status: 'reserved',
             button_state: 'disabled'
         });
+
         document.getElementById('user-info').reset();
         alert('Reservation Successful!');
+
     } catch (error) {
         console.error('Error Adding Document: ', error);
         document.getElementById('user-info').reset();

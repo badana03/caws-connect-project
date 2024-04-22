@@ -36,7 +36,7 @@ listOfPets.forEach(async doc => {
         <div class="card">
             <img src="${url}" alt="pet image">
             <div class="pet">
-                <h4>${doc.data().pet_name} | <b id="category">${doc.data().category}</b> <i value="${doc.data().status}" class="fa-solid fa-bookmark"></i></h4> 
+                <h4>${doc.data().pet_name} | <b id="category">${doc.data().category}</b> <i value="${doc.data().status}" class="fa-solid fa-circle-check"></i></h4> 
                 <p class="desc">${doc.data().desc}</p>
             </div>
             <button class="reserve-btn" onclick="window.location.href = 'form.html?petId=' + '${doc.id}'" ${doc.data().button_state}>Reserve</button>
