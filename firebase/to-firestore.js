@@ -105,7 +105,7 @@ async function addReservation() {
         });
 
         document.getElementById('user-info').reset();
-        alert('Reservation Successful!');
+        alert('Congratulations! The Admin Will Notify You When The Reservation Is Ending.');
 
     } catch (error) {
         console.error('Error Adding Document: ', error);
